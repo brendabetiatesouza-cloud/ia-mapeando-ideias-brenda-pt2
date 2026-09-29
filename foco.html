@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interrupções & Foco Picado - Brebre Organizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPrimary: '#ff007f',
+                        pinkNeon: '#ff1493',
+                        pinkDark: '#4a0028',
+                        pinkGlow: '#ff66b2',
+                        darkBg: '#0f051d'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d021a] text-white min-h-screen relative font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <a href="index.html" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-semibold mb-8 transition-colors">
+            ← Voltar ao Início
+        </a>
+
+        <header class="mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-4 py-1.5 rounded-full border border-pink-500/30">
+                Aprofundamento #5
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold font-heading title-pink-glow mt-4">
+                Interrupções & Foco Picado
+            </h1>
+            <p class="text-gray-300 text-lg mt-4 max-w-3xl">
+                Cada vez que sua atenção é interrompida por uma notificação, seu cérebro leva em média 23 minutos para voltar ao estado de imersão total.
+            </p>
+        </header>
+
+        <!-- Ilustração SVG em Neon -->
+        <div class="glass-card rounded-3xl p-8 mb-12 flex justify-center items-center">
+            <svg class="w-full max-w-md h-64" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Escudo de Foco -->
+                <path d="M 200,30 L 280,60 L 280,120 C 280,165 200,185 200,185 C 200,185 120,165 120,120 L 120,60 Z" stroke="#ff007f" stroke-width="4" fill="#12041e"/>
+                <!-- Ícone de Sino Desativado -->
+                <path d="M 185,85 C 185,75 192,70 200,70 C 208,70 215,75 215,85 L 215,110 L 225,120 L 175,120 L 185,110 Z" stroke="#ffffff" stroke-width="2"/>
+                <line x1="165" y1="65" x2="235" y2="135" stroke="#ff1493" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <section class="space-y-8">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold font-heading text-pink-300 mb-4">🧠 O Custo da Troca de Contexto</h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    Multitarefa é um mito neurológico. O cérebro não realiza duas tarefas complexas ao mesmo tempo; ele apenas alterna rapidamente entre elas, criando um fenômeno chamado "resíduo de atenção", onde parte da sua mente continua presa na notificação anterior.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6">
+                    <span class="text-2xl mb-2 block">📱</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Fato de Atração Visual</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Coloque o celular em outro cômodo ou dentro da gaveta. O simples fato de ver o aparelho sobre a mesa consome energia do córtex pré-frontal para ignorá-lo.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6">
+                    <span class="text-2xl mb-2 block">📝</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Bloco de Pensamentos Flutuantes</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Mantenha um bloco de anotações físico ao lado da mesa. Lembrou que precisa pagar uma conta ou mandar mensagem? Anote no papel e volte ao foco imediatamente.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6">
+                    <span class="text-2xl mb-2 block">🎧</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Isolamento Acústico Neon</h3>
+                    <p class="text-gray-300 text-xs leading-relaxed">
+                        Utilize ruído marrom (Brown Noise) ou sons Binaurais para bloquear ruídos de conversas e barulhos repentinos do ambiente.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

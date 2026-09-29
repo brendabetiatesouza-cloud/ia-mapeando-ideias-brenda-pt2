@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falta de Priorização Clara - Brebre Organizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPrimary: '#ff007f',
+                        pinkNeon: '#ff1493',
+                        pinkDark: '#4a0028',
+                        pinkGlow: '#ff66b2',
+                        darkBg: '#0f051d'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d021a] text-white min-h-screen relative font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <a href="index.html" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-semibold mb-8 transition-colors">
+            ← Voltar ao Início
+        </a>
+
+        <header class="mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-4 py-1.5 rounded-full border border-pink-500/30">
+                Aprofundamento #3
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold font-heading title-pink-glow mt-4">
+                Falta de Priorização Clara
+            </h1>
+            <p class="text-gray-300 text-lg mt-4 max-w-3xl">
+                Ocupação não é produtividade. Gastar o dia inteiro fazendo coisas secundárias sem mover o ponteiro das suas metas reais causa frustração contínua.
+            </p>
+        </header>
+
+        <!-- Ilustração SVG em Neon -->
+        <div class="glass-card rounded-3xl p-8 mb-12 flex justify-center items-center">
+            <svg class="w-full max-w-md h-64" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Alvo de Prioridade -->
+                <circle cx="200" cy="100" r="80" stroke="#ff007f" stroke-width="2" opacity="0.4"/>
+                <circle cx="200" cy="100" r="55" stroke="#ff1493" stroke-width="3" opacity="0.7"/>
+                <circle cx="200" cy="100" r="30" stroke="#ff66b2" stroke-width="4"/>
+                <circle cx="200" cy="100" r="8" fill="#ffffff"/>
+                <!-- Vetores de Impacto -->
+                <line x1="120" y1="100" x2="280" y2="100" stroke="#ff007f" stroke-width="2" stroke-dasharray="4 4"/>
+                <line x1="200" y1="20" x2="200" y2="180" stroke="#ff007f" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+        </div>
+
+        <section class="space-y-8">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold font-heading text-pink-300 mb-4">🎯 O Princípio de Pareto (80/20)</h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    80% dos seus resultados (suas notas, entregas no trabalho, tranquilidade mental) vêm de 20% das suas tarefas diárias. O segredo da produtividade extrema não é fazer mais coisas, é escolher cirurgicamente as tarefas corretas para realizar primeiro.
+                </p>
+            </div>
+
+            <!-- Matriz de Eisenhower Visual -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-red-500">
+                    <span class="text-xs font-bold uppercase text-red-400">Quadrante 1</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">🔥 Urgente & Importante</h3>
+                    <p class="text-gray-300 text-sm mb-4">Faça Imediatamente.</p>
+                    <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
+                        <li>Trabalhos acadêmicos com entrega hoje</li>
+                        <li>Crises ou bugs urgentes no trabalho</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-pink-500">
+                    <span class="text-xs font-bold uppercase text-pink-400">Quadrante 2 (O Segredo do Sucesso)</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">📅 Não Urgente, mas Importante</h3>
+                    <p class="text-gray-300 text-sm mb-4">Agende na Agenda.</p>
+                    <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
+                        <li>Estudo contínuo para provas do mês que vem</li>
+                        <li>Planejamento de carreira e exercícios</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-yellow-500">
+                    <span class="text-xs font-bold uppercase text-yellow-400">Quadrante 3</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">🤝 Urgente, mas Não Importante</h3>
+                    <p class="text-gray-300 text-sm mb-4">Delegue ou Simplifique.</p>
+                    <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
+                        <li>Responder e-mails secundários sem urgência</li>
+                        <li>Interrupções de grupos de mensagens</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 border-t-4 border-gray-600">
+                    <span class="text-xs font-bold uppercase text-gray-400">Quadrante 4</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-2">🚫 Nem Urgente, Nem Importante</h3>
+                    <p class="text-gray-300 text-sm mb-4">Elimine impiedosamente.</p>
+                    <ul class="text-xs text-gray-400 space-y-1 list-disc list-inside">
+                        <li>Perder tempo feed infinito</li>
+                        <li>Organizar arquivos irrelevantes no computador</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

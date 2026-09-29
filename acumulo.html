@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acúmulo Estudo + Trabalho - Brebre Organizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPrimary: '#ff007f',
+                        pinkNeon: '#ff1493',
+                        pinkDark: '#4a0028',
+                        pinkGlow: '#ff66b2',
+                        darkBg: '#0f051d'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d021a] text-white min-h-screen relative font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <a href="index.html" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-semibold mb-8 transition-colors">
+            ← Voltar ao Início
+        </a>
+
+        <header class="mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-4 py-1.5 rounded-full border border-pink-500/30">
+                Aprofundamento #2
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold font-heading title-pink-glow mt-4">
+                Acúmulo Estudo + Trabalho
+            </h1>
+            <p class="text-gray-300 text-lg mt-4 max-w-3xl">
+                Conciliar emprego e vida acadêmica exige estratégias rígidas de eliminação de gargalos para evitar o sentimento de estar sufocado por pendências.
+            </p>
+        </header>
+
+        <!-- Ilustração SVG em Neon -->
+        <div class="glass-card rounded-3xl p-8 mb-12 flex justify-center items-center">
+            <svg class="w-full max-w-md h-64" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pilhas Simbolizando Tarefas -->
+                <rect x="80" y="130" width="100" height="30" rx="6" fill="#1f0933" stroke="#ff007f" stroke-width="2"/>
+                <rect x="90" y="95" width="80" height="30" rx="6" fill="#1f0933" stroke="#ff1493" stroke-width="2"/>
+                <rect x="100" y="60" width="60" height="30" rx="6" fill="#1f0933" stroke="#ff66b2" stroke-width="2"/>
+                
+                <path d="M 210,110 L 250,110 L 250,80 L 290,115 L 250,150 L 250,120 L 210,120 Z" fill="#ff007f"/>
+                
+                <!-- Caixa Organizada -->
+                <rect x="300" y="70" width="70" height="90" rx="10" stroke="#ff66b2" stroke-width="2" fill="#12041e"/>
+                <line x1="315" y1="95" x2="355" y2="95" stroke="#ff007f" stroke-width="3" stroke-linecap="round"/>
+                <line x1="315" y1="115" x2="355" y2="115" stroke="#ff007f" stroke-width="3" stroke-linecap="round"/>
+                <line x1="315" y1="135" x2="340" y2="135" stroke="#ff007f" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <section class="space-y-8">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold font-heading text-pink-300 mb-4">📊 A Síndrome do Copo Cheio</h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    Tentar manter na cabeça tudo o que precisa ser feito gera uma sobrecarga na memória de trabalho. A mente consome energia tentando "não esquecer" em vez de focar na execução da tarefa presente.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-l-4 border-pink-500">
+                    <h3 class="text-xl font-bold text-white mb-2">📥 Técnica Brain Dump (Descarrego)</h3>
+                    <p class="text-gray-300 text-sm">
+                        Toda manhã ou início de noite, escreva sem filtro absolutamente tudo o que precisa fazer. Somente após tirar do cérebro é que você conseguirá categorizar o que é urgente e o que pode esperar.
+                    </p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-l-4 border-pink-500">
+                    <h3 class="text-xl font-bold text-white mb-2">🗓️ Timeboxing (Blocos de Tempo)</h3>
+                    <p class="text-gray-300 text-sm">
+                        Defina horários inegociáveis para o trabalho e para a faculdade. Misturar os dois mundos (estudar durante o trabalho ou pensar nas demandas do trabalho na aula) só gera culpa constante.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Gerenciador Prático de Checklist -->
+            <div class="glass-modal rounded-3xl p-8 border border-pink-500/50">
+                <h3 class="text-2xl font-bold font-heading text-pink-400 mb-4">Checklist de Desacumulo Express</h3>
+                <div class="flex gap-2 mb-6">
+                    <input type="text" id="task-input" placeholder="Adicione uma pendência importante..." class="flex-1 bg-gray-900 border border-pink-500/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-pink-400 text-white">
+                    <button onclick="addTask()" class="btn-neon px-6 py-3 rounded-xl font-bold text-white">Adicionar</button>
+                </div>
+                <ul id="task-list" class="space-y-3">
+                    <!-- Dinâmico via JS -->
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let tasks = [
+            { text: 'Finalizar slide de apresentação', completed: false },
+            { text: 'Revisar 1 capítulo do livro didático', completed: true }
+        ];
+
+        function renderTasks() {
+            const list = document.getElementById('task-list');
+            list.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between p-4 rounded-xl bg-gray-900/80 border border-pink-500/20 text-sm';
+                li.innerHTML = `
+                    <span class="${task.completed ? 'line-through text-gray-500' : 'text-gray-200'} cursor-pointer" onclick="toggleTask(${index})">
+                        ${task.completed ? '✅' : '⚪'} ${task.text}
+                    </span>
+                    <button onclick="removeTask(${index})" class="text-red-400 hover:text-red-300 font-bold px-2">✕</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function addTask() {
+            const input = document.getElementById('task-input');
+            if (input.value.trim()) {
+                tasks.push({ text: input.value.trim(), completed: false });
+                input.value = '';
+                renderTasks();
+            }
+        }
+
+        function toggleTask(i) {
+            tasks[i].completed = !tasks[i].completed;
+            renderTasks();
+        }
+
+        function removeTask(i) {
+            tasks.splice(i, 1);
+            renderTasks();
+        }
+
+        renderTasks();
+    </script>
+</body>
+</html>

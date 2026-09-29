@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de estudos da Brebre</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN para fundo 3D animado -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google Fonts: Poppins e Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Configurações customizadas do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPrimary: '#ff007f', // Rosa Pink Vibrante
+                        pinkNeon: '#ff1493',
+                        pinkDark: '#4a0028',
+                        pinkGlow: '#ff66b2',
+                        darkBg: '#0f051d'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="relative min-h-screen bg-[#0d021a] text-white">
+
+    <div id="canvas-container"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
+        
+        <header class="text-center my-10 space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-pink-950/80 border border-pink-500/50 text-pink-300 text-sm font-semibold tracking-wide uppercase mb-2 animate-pulse">
+                ⚡ Seu espaço de produtividade & organização
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-heading tracking-tight title-pink-glow">
+                Organizador de estudos da Brebre
+            </h1>
+            <p class="text-gray-300 max-w-2xl mx-auto text-base sm:text-lg px-2">
+                Transforme o caos do dia a dia da faculdade e trabalho em clareza mental. Clique nos cards abaixo para explorar e aprofundar cada tema!
+            </p>
+            
+            <!-- Barra de Resumo Rápido -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <div class="glass-card px-5 py-3 rounded-2xl flex items-center gap-3">
+                    <span class="text-2xl">🔥</span>
+                    <div class="text-left">
+                        <div class="text-xs text-gray-400 font-semibold uppercase">Foco Diário</div>
+                        <div id="stat-focus" class="text-lg font-bold text-pink-400">0 min concluídos</div>
+                    </div>
+                </div>
+                <div class="glass-card px-5 py-3 rounded-2xl flex items-center gap-3">
+                    <span class="text-2xl">✅</span>
+                    <div class="text-left">
+                        <div class="text-xs text-gray-400 font-semibold uppercase">Tarefas Feitas</div>
+                        <div id="stat-tasks" class="text-lg font-bold text-pink-400">0/0 resolvidas</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+            
+            <!-- CARD 1: Procrastinação -->
+            <a href="procrastinacao.html" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        ⏰
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-500/30">
+                        Incômodo #1
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Procrastinação & Adiantamento
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                        Sensação contínua de "deixar para depois", paralisia ao ver a quantidade de matérias e o vício em distrações rápidas.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Aprofundar Tema & Ferramentas</span>
+                    <span class="text-lg">→</span>
+                </div>
+            </a>
+
+            <!-- CARD 2: Acúmulo de Tarefas -->
+            <a href="acumulo.html" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        📚
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-500/30">
+                        Incômodo #2
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Acúmulo Estudo + Trabalho
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                        Prazos do trabalho batendo com entregas da faculdade. Sensação diária de afogamento em listas infinitas de pendências.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Aprofundar Tema & Ferramentas</span>
+                    <span class="text-lg">→</span>
+                </div>
+            </a>
+
+            <!-- CARD 3: Falta de Priorização -->
+            <a href="priorizacao.html" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        🎯
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-500/30">
+                        Incômodo #3
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Falta de Priorização Clara
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                        Não saber por onde começar no dia e gastar energia com tarefas secundárias em vez do que realmente gera resultado.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Aprofundar Tema & Ferramentas</span>
+                    <span class="text-lg">→</span>
+                </div>
+            </a>
+
+            <!-- CARD 4: Burnout e Cansaço -->
+            <a href="burnout.html" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        🔋
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-500/30">
+                        Incômodo #4
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Cansaço Excessivo & Burnout
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                        Esgotamento físico e mental extremo, ansiedade com notas/metas e sensação de estar sempre no limite do rendimento.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Aprofundar Tema & Ferramentas</span>
+                    <span class="text-lg">→</span>
+                </div>
+            </a>
+
+            <!-- CARD 5: Interrupções e Foco -->
+            <a href="foco.html" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        🔕
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-500/30">
+                        Incômodo #5
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Interrupções & Foco Picado
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2 line-clamp-3">
+                        Notificações no celular, barulho no ambiente e interrupções frequentes que quebram o estado de concentração.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Aprofundar Tema & Ferramentas</span>
+                    <span class="text-lg">→</span>
+                </div>
+            </a>
+
+            <!-- CARD 6: Registrar Novo Incômodo -->
+            <div onclick="openModal('modal-novo')" class="glass-card rounded-3xl p-6 cursor-pointer flex flex-col justify-between border-dashed border-2 border-pink-500/60 group hover:border-pink-400">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-pink-950/80 border border-pink-500/50 flex items-center justify-center text-3xl mb-4 text-pink-400 group-hover:scale-110 transition-transform">
+                        ✍️
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-pink-300 bg-pink-900/50 px-3 py-1 rounded-full">
+                        Personalizado
+                    </span>
+                    <h3 class="text-2xl font-bold font-heading text-white mt-3 group-hover:text-pink-300 transition-colors">
+                        Cadastrar Novo Problema
+                    </h3>
+                    <p class="text-gray-300 text-sm mt-2">
+                        Está sentindo um incômodo específico na sua rotina de hoje? Descreva o problema e crie um plano de ação rápido.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-pink-500/20 flex justify-between items-center text-xs font-bold text-pink-400">
+                    <span>Criar Solução Personalizada</span>
+                    <span class="text-lg">+</span>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MODAL: CADASTRAR NOVO PROBLEMA -->
+    <div id="modal-novo" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-modal rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeModal('modal-novo')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-2xl font-bold p-2">✕</button>
+            
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">✍️</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-white">Registrar Incômodo</h2>
+            </div>
+
+            <form onsubmit="handleNewProblem(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-pink-300 uppercase mb-1">Qual é o problema de hoje?</label>
+                    <input type="text" id="custom-title" required placeholder="Ex: TDAH e hiperfoco desregulado" class="w-full bg-gray-900 border border-pink-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-pink-300 uppercase mb-1">Como isso atrapalha sua rotina?</label>
+                    <textarea id="custom-desc" rows="3" required placeholder="Descreva os incômodos que isso causa..." class="w-full bg-gray-900 border border-pink-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-400"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-pink-300 uppercase mb-1">Qual ação de 5 minutos pode ajudar?</label>
+                    <input type="text" id="custom-action" required placeholder="Ex: Limpar a mesa antes de sentar" class="w-full bg-gray-900 border border-pink-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-400">
+                </div>
+
+                <button type="submit" class="btn-neon w-full py-3 rounded-xl font-bold text-white mt-2">
+                    Salvar Solução no Organizador
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        /* ===================================================
+           1. FUNDO 3D ANIMADO COM THREE.JS
+           =================================================== */
+        window.addEventListener('load', () => {
+            init3DBackground();
+        });
+
+        let scene, camera, renderer, objectsGroup;
+
+        function init3DBackground() {
+            const container = document.getElementById('canvas-container');
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const pointLight1 = new THREE.PointLight(0xff007f, 2, 100);
+            pointLight1.position.set(20, 20, 20);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0xff52a0, 1.5, 100);
+            pointLight2.position.set(-20, -20, -10);
+            scene.add(pointLight2);
+
+            objectsGroup = new THREE.Group();
+
+            const pinkMaterial = new THREE.MeshPhongMaterial({
+                color: 0xff007f,
+                shininess: 90,
+                wireframe: false,
+                transparent: true,
+                opacity: 0.85
+            });
+
+            const glassMaterial = new THREE.MeshPhongMaterial({
+                color: 0xff66b2,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.4
+            });
+
+            const geometries = [
+                new THREE.TorusGeometry(2, 0.7, 16, 100),
+                new THREE.IcosahedronGeometry(2.2, 0),
+                new THREE.OctahedronGeometry(2),
+                new THREE.SphereGeometry(1.5, 32, 32),
+                new THREE.TorusKnotGeometry(1.5, 0.4, 100, 16)
+            ];
+
+            for (let i = 0; i < 22; i++) {
+                const geom = geometries[Math.floor(Math.random() * geometries.length)];
+                const mat = Math.random() > 0.4 ? pinkMaterial : glassMaterial;
+                const mesh = new THREE.Mesh(geom, mat);
+
+                mesh.position.x = (Math.random() - 0.5) * 60;
+                mesh.position.y = (Math.random() - 0.5) * 60;
+                mesh.position.z = (Math.random() - 0.5) * 40;
+
+                mesh.rotation.x = Math.random() * Math.PI;
+                mesh.rotation.y = Math.random() * Math.PI;
+                
+                const scale = Math.random() * 0.8 + 0.5;
+                mesh.scale.set(scale, scale, scale);
+
+                mesh.userData = {
+                    rotSpeedX: (Math.random() - 0.5) * 0.015,
+                    rotSpeedY: (Math.random() - 0.5) * 0.015,
+                    floatSpeed: Math.random() * 0.02 + 0.005,
+                    floatOffset: Math.random() * Math.PI * 2
+                };
+
+                objectsGroup.add(mesh);
+            }
+
+            scene.add(objectsGroup);
+
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+                
+                objectsGroup.rotation.y = mouseX * 0.3;
+                objectsGroup.rotation.x = -mouseY * 0.3;
+            });
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            animate3D();
+        }
+
+        let clock = new THREE.Clock();
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            objectsGroup.children.forEach((obj) => {
+                obj.rotation.x += obj.userData.rotSpeedX;
+                obj.rotation.y += obj.userData.rotSpeedY;
+                obj.position.y += Math.sin(elapsedTime * 2 + obj.userData.floatOffset) * 0.02;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        /* ===================================================
+           2. CONTROLE DO MODAL
+           =================================================== */
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) modal.classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) modal.classList.add('hidden');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('fixed')) {
+                event.target.classList.add('hidden');
+            }
+        };
+
+        /* ===================================================
+           3. CADASTRAR NOVO PROBLEMA PERSONALIZADO
+           =================================================== */
+        function handleNewProblem(e) {
+            e.preventDefault();
+            const title = document.getElementById('custom-title').value;
+            const action = document.getElementById('custom-action').value;
+
+            alert(`✅ Novo problema cadastrado com sucesso!\n\nTítulo: ${title}\nAção Recomendada: ${action}`);
+            
+            closeModal('modal-novo');
+            document.getElementById('custom-title').value = '';
+            document.getElementById('custom-desc').value = '';
+            document.getElementById('custom-action').value = '';
+        }
+    </script>
+</body>
+</html>

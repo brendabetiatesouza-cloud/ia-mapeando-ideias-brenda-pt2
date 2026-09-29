@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procrastinação & Adiantamento - Brebre Organizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkPrimary: '#ff007f',
+                        pinkNeon: '#ff1493',
+                        pinkDark: '#4a0028',
+                        pinkGlow: '#ff66b2',
+                        darkBg: '#0f051d'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0d021a] text-white min-h-screen relative font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- Navegação de Volta -->
+        <a href="index.html" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-semibold mb-8 transition-colors">
+            ← Voltar ao Início
+        </a>
+
+        <!-- Header da Página -->
+        <header class="mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-4 py-1.5 rounded-full border border-pink-500/30">
+                Aprofundamento #1
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold font-heading title-pink-glow mt-4">
+                Procrastinação & Adiantamento
+            </h1>
+            <p class="text-gray-300 text-lg mt-4 max-w-3xl">
+                A procrastinação não é preguiça — é uma disfunção na regulação emocional do cérebro frente a tarefas que parecem ameaçadoras, tediosas ou gigantescas.
+            </p>
+        </header>
+
+        <!-- Ilustração SVG em Neon -->
+        <div class="glass-card rounded-3xl p-8 mb-12 flex justify-center items-center">
+            <svg class="w-full max-w-md h-64" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="100" r="80" stroke="#ff007f" stroke-width="4" stroke-dasharray="8 8"/>
+                <circle cx="200" cy="100" r="60" stroke="#ff66b2" stroke-width="2"/>
+                <!-- Ponteiro do Relógio -->
+                <line x1="200" y1="100" x2="200" y2="45" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                <line x1="200" y1="100" x2="240" y2="100" stroke="#ff007f" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="200" cy="100" r="6" fill="#ffffff"/>
+                <!-- Ondas de Foco -->
+                <path d="M 50,100 Q 100,50 150,100 T 250,100 T 350,100" stroke="#ff1493" stroke-width="2" fill="none" opacity="0.5"/>
+            </svg>
+        </div>
+
+        <!-- Conteúdo Aprofundado -->
+        <section class="space-y-8">
+            <div class="glass-card rounded-2xl p-6 sm:p-8">
+                <h2 class="text-2xl font-bold font-heading text-pink-300 mb-4">🧠 A Psicologia Por Trás do "Deixar para Depois"</h2>
+                <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                    Quando você encara uma pilha de livros ou um trabalho complexo da faculdade, sua amígdala cerebral interpreta essa incerteza como estresse. Para proteger você desse desconforto imediato, o cérebro busca recompensas rápidas de dopamina (redes sociais, vídeos rápidos, arrumar a mesa). A solução não é forçar a barra, mas diminuir o atrito do início.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 border-l-4 border-pink-500">
+                    <h3 class="text-xl font-bold text-white mb-2">⚡ Regra dos 5 Minutos</h3>
+                    <p class="text-gray-300 text-sm">
+                        Faça um acordo mental: você só precisa estudar por 5 minutos. Se ao fim desse tempo ainda quiser parar, você tem permissão. Em 80% dos casos, a resistência inicial se dissolve e o estado de fluxo assume.
+                    </p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-l-4 border-pink-500">
+                    <h3 class="text-xl font-bold text-white mb-2">🧩 Micro-Fracionamento de Tarefas</h3>
+                    <p class="text-gray-300 text-sm">
+                        Em vez de colocar "Escrever TCC" no seu planejamento, divida em: "Abrir o documento e escrever o primeiro parágrafo da introdução". Torne a tarefa tão ridiculamente fácil que o seu cérebro não consiga dizer não.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interatividade Local: Pomodoro Embutido -->
+            <div class="glass-modal rounded-3xl p-8 border border-pink-500/50">
+                <h3 class="text-2xl font-bold font-heading text-pink-400 mb-4 text-center">Laboratório de Foco Prático</h3>
+                <div class="text-center">
+                    <div id="pomodoro-display" class="text-6xl font-mono font-bold text-white my-6 tracking-wider">25:00</div>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="startPomodoro()" class="btn-neon px-8 py-3 rounded-xl font-bold text-white">Iniciar</button>
+                        <button onclick="pausePomodoro()" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl font-semibold text-gray-200">Pausar</button>
+                        <button onclick="resetPomodoro()" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl font-semibold text-gray-200">Resetar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let pomodoroTimer = null;
+        let pomodoroSeconds = 25 * 60;
+
+        function updateDisplay() {
+            const mins = Math.floor(pomodoroSeconds / 60);
+            const secs = pomodoroSeconds % 60;
+            document.getElementById('pomodoro-display').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function startPomodoro() {
+            if (pomodoroTimer) return;
+            pomodoroTimer = setInterval(() => {
+                if (pomodoroSeconds > 0) {
+                    pomodoroSeconds--;
+                    updateDisplay();
+                } else {
+                    clearInterval(pomodoroTimer);
+                    pomodoroTimer = null;
+                    alert('🎉 Sessão concluída! Faça uma pausa de 5 minutos.');
+                    resetPomodoro();
+                }
+            }, 1000);
+        }
+
+        function pausePomodoro() {
+            clearInterval(pomodoroTimer);
+            pomodoroTimer = null;
+        }
+
+        function resetPomodoro() {
+            pausePomodoro();
+            pomodoroSeconds = 25 * 60;
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
